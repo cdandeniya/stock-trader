@@ -2,49 +2,6 @@
 
 A comprehensive Java web application for managing stock trading operations with role-based access control.
 
-## 🏗️ Project Structure
-
-```
-FinalProject/
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/
-│       │       └── stocktrader/
-│       │           ├── controller/     # Servlet controllers
-│       │           ├── service/        # Business logic layer
-│       │           ├── repository/     # Data access layer (DAOs)
-│       │           ├── model/          # Domain models
-│       │           ├── dto/            # Data Transfer Objects
-│       │           ├── util/           # Utility classes
-│       │           ├── config/         # Configuration classes
-│       │           └── exception/      # Custom exceptions
-│       ├── resources/
-│       │   ├── sql/                   # Database scripts
-│       │   ├── properties/            # Configuration files
-│       │   └── config/                # Additional config
-│       └── webapp/
-│           ├── WEB-INF/
-│           │   ├── views/
-│           │   │   ├── admin/         # Manager views
-│           │   │   ├── customer/      # Customer views
-│           │   │   └── representative/ # Customer rep views
-│           │   └── web.xml
-│           ├── static/
-│           │   ├── css/               # Stylesheets
-│           │   ├── js/                # JavaScript files
-│           │   └── images/            # Image assets
-│           ├── index.jsp              # Login page
-│           ├── header.jsp             # Common header
-│           └── footer.jsp             # Common footer
-├── docs/
-│   ├── api/                          # API documentation
-│   ├── deployment/                   # Deployment guides
-│   └── user-guide/                   # User documentation
-├── pom.xml                           # Maven configuration
-└── README.md                         # This file
-```
-
 ## 🎯 Features
 
 ### Role-Based Access Control
@@ -168,14 +125,3 @@ Helper classes for common operations.
 
 This project is for educational purposes as part of CSE305 coursework.
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
----
-
-**Built with ❤️ for CSE305 Project** 
