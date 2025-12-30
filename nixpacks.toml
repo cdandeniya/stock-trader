@@ -1,0 +1,12 @@
+[phases.setup]
+nixPkgs = ["maven", "jdk8"]
+
+[phases.install]
+cmds = ["cd stock-trader && mvn clean package -DskipTests"]
+
+[phases.build]
+cmds = ["echo 'Build complete'"]
+
+[start]
+cmd = "cd stock-trader && java -jar target/stock-trader.war"
+
