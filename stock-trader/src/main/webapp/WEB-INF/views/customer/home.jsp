@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="heading" value="Home"/>
-<%@ include file="header.jsp" %>
+<%@ include file="../../header.jsp" %>
 
 <div class="container">
     <h2><i class="fas fa-user"></i> Customer Dashboard</h2>
     <p class="text-muted mb-4">Manage your orders and track your stock portfolio</p>
     <%
-        String email = (String)session.getAttribute("email");
-        String role = (String)session.getAttribute("role");
+        // email and role are already declared in header.jsp
+        email = (String)session.getAttribute("email");
+        role = (String)session.getAttribute("role");
 
         //redirect to appropriate home page if already logged in
         if(email != null) {
@@ -66,4 +67,4 @@
     </div>
 </div>
 </div>
-<%@ include file="footer.jsp" %>
+<%@ include file="../../footer.jsp" %>

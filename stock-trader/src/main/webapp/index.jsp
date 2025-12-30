@@ -6,18 +6,23 @@
 <div class="container">
 			<h2>Login to Stock Trading System</h2>
 			<%
-				String email = (String)session.getAttribute("email");
-				String role = (String)session.getAttribute("role");
+				// email and role are already declared in header.jsp
+				email = (String)session.getAttribute("email");
+				role = (String)session.getAttribute("role");
 				
 				if(email != null) {
-					if(role.equals("manager")) {
-						response.sendRedirect("managerHome.jsp");
+					// Forward to the appropriate home page based on role
+					if(role != null && role.equals("manager")) {
+						request.getRequestDispatcher("/WEB-INF/views/admin/managerHome.jsp").forward(request, response);
+						return;
 					}
-					else if(role.equals("customerRepresentative")) {
-						response.sendRedirect("customerRepresentativeHome.jsp");
+					else if(role != null && role.equals("customerRepresentative")) {
+						request.getRequestDispatcher("/WEB-INF/views/representative/customerRepresentativeHome.jsp").forward(request, response);
+						return;
 					}
 					else {
-						response.sendRedirect("home.jsp");	
+						request.getRequestDispatcher("/WEB-INF/views/customer/home.jsp").forward(request, response);
+						return;
 					}
 				}
 				

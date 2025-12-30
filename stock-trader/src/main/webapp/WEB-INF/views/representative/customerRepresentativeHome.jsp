@@ -1,4 +1,4 @@
-<%@ include file="header.jsp" %>
+<%@ include file="../../header.jsp" %>
 <!--
 	This is the Home page for Customer Representative
 	This page contains various buttons to navigate the online auction house
@@ -8,8 +8,9 @@
     <h2><i class="fas fa-headset"></i> Customer Representative Dashboard</h2>
     <p class="text-muted mb-4">Manage customers and process orders</p>
     <%
-        String email = (String)session.getAttribute("email");
-        String role = (String)session.getAttribute("role");
+        // email and role are already declared in header.jsp
+        email = (String)session.getAttribute("email");
+        role = (String)session.getAttribute("role");
 
         //redirect to appropriate home page if already logged in
         if(email != null) {

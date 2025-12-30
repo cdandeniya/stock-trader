@@ -26,11 +26,12 @@
 	    <artifactId>jstl</artifactId>
 	    <version>1.2</version>
 	</dependency>	
-	<!-- https://mvnrepository.com/artifact/javax.el/el-api -->
+	<!-- EL API - provided by Tomcat, so mark as provided -->
 	<dependency>
 	    <groupId>javax.el</groupId>
 	    <artifactId>el-api</artifactId>
-	    <version>2.2.1-b04</version>
+	    <version>2.2</version>
+	    <scope>provided</scope>
 	</dependency>
 	<dependency>
 	    <groupId>org.webjars</groupId>
