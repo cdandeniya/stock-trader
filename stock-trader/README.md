@@ -1,96 +1,127 @@
 # Stock Trading System
 
-A Java web application for managing stock trading operations with role-based access control.
-
-> **Note**: This was originally a CSE305 group project that has been personalized and enhanced with additional features and improved architecture.
-
-## 🏗️ Architecture
-
-```
-stock-trader/
-├── src/main/java/com/stocktrader/
-│   ├── controller/     # HTTP request handlers
-│   ├── service/        # Business logic
-│   ├── repository/     # Data access layer
-│   ├── model/          # Domain objects
-│   ├── config/         # Configuration
-│   └── util/           # Utilities
-├── src/main/webapp/
-│   ├── WEB-INF/views/  # JSP pages by role
-│   └── static/         # CSS, JS, assets
-└── src/main/resources/sql/  # Database scripts
-```
+A comprehensive Java web application for managing stock trading operations with role-based access control.
 
 ## 🎯 Features
 
-- **Role-Based Access**: Managers, Customer Representatives, Customers
-- **Stock Trading**: Market, Trailing Stop, Hidden Stop orders
-- **Portfolio Management**: Track holdings and performance
-- **Sales Analytics**: Reports and revenue tracking
-- **Employee Management**: Add, edit, delete staff
+### Role-Based Access Control
+- **Managers**: Employee management, sales reports, stock price management
+- **Customer Representatives**: Customer management, order processing
+- **Customers**: Stock trading, portfolio management
+
+### Core Functionality
+- Stock order management (Market, Trailing Stop, Hidden Stop)
+- Real-time stock price updates
+- Customer and employee management
+- Sales reporting and analytics
+- Portfolio tracking
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Java 8+, Maven 3.6+, MySQL 5.7+, Tomcat 8.5+
+- Java 8+
+- Maven 3.6+
+- MySQL 5.7+
+- Tomcat 8.5+
 
 ### Setup
-```bash
-# Database
-mysql -u root -p < src/main/resources/sql/BETTERSCRIPT.sql
-mysql -u root -p < src/main/resources/sql/basevalues.sql
+1. **Database Setup**
+   ```bash
+   mysql -u root -p < src/main/resources/sql/BETTERSCRIPT.sql
+   mysql -u root -p < src/main/resources/sql/basevalues.sql
+   ```
 
-# Build & Deploy
-mvn clean install
-mvn tomcat7:deploy
+2. **Build Project**
+   ```bash
+   mvn clean install
+   ```
 
-# Access
-http://localhost:8080/stock-trader/
-```
+3. **Deploy to Tomcat**
+   ```bash
+   mvn tomcat7:deploy
+   ```
 
-## 🔑 Login Credentials
-
-- **Manager**: `dwarren@cs.sunysb.edu` / `admin789`
-- **Customer Rep**: `dsmith@cs.sunysb.edu` / `rep456`
-- **Customer**: `lewis.p@cs.sunysb.edu` / `password123`
+4. **Access Application**
+   ```
+   http://localhost:8080/stock-trader/
+   ```
 
 ## 🔧 Configuration
 
-Update database settings in `src/main/java/com/stocktrader/config/DatabaseConfig.java`:
+### Database Configuration
+Update `src/main/java/com/stocktrader/config/DatabaseConfig.java`:
 ```java
 private static final String URL = "jdbc:mysql://localhost:3306/cse305";
 private static final String USER = "your_username";
 private static final String PASSWORD = "your_password";
 ```
 
-## 📊 Database Schema
+### Default Login Credentials
+- **Manager**: `dwarren@cs.sunysb.edu` / `admin789`
+- **Customer Rep**: `dsmith@cs.sunysb.edu` / `rep456`
+- **Customer**: `lewis.p@cs.sunysb.edu` / `password123`
 
-- `Customers`: Customer info and ratings
-- `Employee`: Staff data with roles
-- `Stock`: Stock info and prices
-- `Account`: Customer account mappings
-- `StockOrder`: Trading transactions
+## 📁 Key Components
+
+### Controllers (`controller/`)
+Handle HTTP requests and responses, route to appropriate services.
+
+### Services (`service/`)
+Contain business logic, validation, and orchestrate data operations.
+
+### Repository (`repository/`)
+Data access layer, handle database operations through DAOs.
+
+### Models (`model/`)
+Domain objects representing business entities.
+
+### DTOs (`dto/`)
+Data Transfer Objects for API communication.
+
+### Utilities (`util/`)
+Helper classes for common operations.
 
 ## 🛠️ Development
 
-### Adding Features
+### Adding New Features
 1. Create model in `model/`
 2. Add repository methods in `repository/`
 3. Implement business logic in `service/`
 4. Create controller in `controller/`
 5. Add JSP views in appropriate `views/` directory
 
+### Code Style
+- Follow Java naming conventions
+- Use meaningful variable and method names
+- Add comments for complex logic
+- Handle exceptions appropriately
+
+## 📊 Database Schema
+
+### Core Tables
+- `Customers`: Customer information and ratings
+- `Employee`: Employee data with roles
+- `Stock`: Stock information and prices
+- `Account`: Customer account mappings
+- `StockOrder`: Trading orders and transactions
+
 ## 🔒 Security
 
 - Session-based authentication
 - Role-based access control
-- Input validation
+- Input validation and sanitization
 - SQL injection prevention
+
+## 🚀 Deployment
+
+### Production Checklist
+- [ ] Update database credentials
+- [ ] Configure logging
+- [ ] Set up monitoring
+- [ ] Enable HTTPS
+- [ ] Configure backup strategy
 
 ## 📝 License
 
-Educational project for CSE305 coursework.
+This project is for educational purposes as part of CSE305 coursework.
 
----
-
-**Built with ❤️ - Enhanced from original group project** 
