@@ -3,7 +3,7 @@
 <c:set var="heading" value="Home"/>
 <%@ include file="header.jsp" %>
 
-<div class="container" style="padding-bottom: 60px; margin-bottom: 40px;">
+<div class="container" style="padding-bottom: 150px; margin-bottom: 80px; overflow: visible !important; min-height: 500px;">
 			<h2>Login to Stock Trading System</h2>
 			<%
 				// email and role are already declared in header.jsp
@@ -40,7 +40,7 @@
 					}
 				}
 			%>
-			<form action="login" method="post">
+			<form action="login" method="post" style="overflow: visible !important; margin-bottom: 3rem;">
 				<div class="form-group">
 					<label for="username">Email Address</label>
 					<input type="email" class="form-control" id="username" name="username" placeholder="Enter your email" required>
@@ -49,9 +49,9 @@
 					<label for="password">Password</label>
 	            	<input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
 	        	</div>
-				<div class="form-group" style="margin-bottom: 1.5rem; z-index: 1000; position: relative;">
+				<div class="form-group" style="margin-bottom: 2rem; position: relative; z-index: 9999;">
 					<label for="role">Role</label>
-					<select class="form-control" id="role" name="role" required style="position: relative; z-index: 1001;">
+					<select class="form-control" id="role" name="role" required style="position: relative; z-index: 10000 !important; background-color: white !important; overflow: visible !important;">
                         <option value="customer">Customer</option>
                         <option value="manager">Manager</option>
                         <option value="customerRepresentative">Customer Representative</option>
@@ -59,7 +59,7 @@
 				</div>
 				<button type="submit" class="btn btn-success btn-block" style="margin-top: 1rem;">Login</button>
 			</form>
-			<div class="mt-4 mb-3 text-center">
+			<div class="mt-4 mb-3 text-center" style="margin-top: 2rem !important;">
 				<small class="text-muted">Demo Credentials:<br/>
 				Manager: dwarren@cs.sunysb.edu / admin789<br/>
 				Customer Rep: dsmith@cs.sunysb.edu / rep456<br/>
