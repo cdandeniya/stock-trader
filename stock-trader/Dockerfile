@@ -18,8 +18,11 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 # Copy WAR file from build stage
 COPY --from=build /app/target/stock-trader.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose port (most platforms use PORT env var)
+# Expose port (Railway uses PORT env var)
 EXPOSE 8080
+
+# Set environment variable for port (Railway requirement)
+ENV PORT=8080
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
