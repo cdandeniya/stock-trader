@@ -4,7 +4,8 @@
 <%@ include file="header.jsp" %>
 
 <div class="container">
-    <h2>Customer Options:</h2>
+    <h2><i class="fas fa-user"></i> Customer Dashboard</h2>
+    <p class="text-muted mb-4">Manage your orders and track your stock portfolio</p>
     <%
         String email = (String)session.getAttribute("email");
         String role = (String)session.getAttribute("role");
@@ -27,14 +28,13 @@
     <div class="col">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Orders</h5>
-            <div class="container">
+            <h5 class="card-title"><i class="fas fa-shopping-cart"></i> Orders</h5>
+            <div>
                 <form action="viewAddOrder">
-                    <input type="submit" value="Place Order" class="btn btn-success"/>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-plus-circle"></i> Place Order</button>
                 </form>
-
-                <form action="getOrdersByCustomer" class="pt-1">
-                    <input type="submit" value="Order History" class="btn btn-success"/>
+                <form action="getOrdersByCustomer">
+                    <button type="submit" class="btn btn-success"><i class="fas fa-history"></i> Order History</button>
                 </form>
             </div>
           </div>
@@ -43,22 +43,22 @@
     <div class="col">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Stocks</h5>
-            <div class="container">
+            <h5 class="card-title"><i class="fas fa-chart-line"></i> Stocks</h5>
+            <div>
                 <form action="getStocksByCustomer">
-                    <input type="submit" value="Current stock holdings" class="btn btn-success"/>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-briefcase"></i> Current Holdings</button>
                 </form>
-                <form action="viewGetStockPriceHistory" class="pt-1">
-                    <input type="submit" value="Stock price history" class="btn btn-success"/>
+                <form action="viewGetStockPriceHistory">
+                    <button type="submit" class="btn btn-success"><i class="fas fa-chart-area"></i> Price History</button>
                 </form>
-                <form action="viewSearchStocks" class="pt-1">
-                    <input type="submit" value="Search stocks" class="btn btn-success"/>
+                <form action="viewSearchStocks">
+                    <button type="submit" class="btn btn-success"><i class="fas fa-search"></i> Search Stocks</button>
                 </form>
-                <form action="getCustomerBestsellers" class="pt-1">
-                    <input type="submit" value="View bestseller stocks" class="btn btn-success"/>
+                <form action="getCustomerBestsellers">
+                    <button type="submit" class="btn btn-success"><i class="fas fa-fire"></i> Bestseller Stocks</button>
                 </form>
-                <form action="getStockSuggestions" class="pt-1">
-                    <input type="submit" value="View suggested stocks" class="btn btn-success"/>
+                <form action="getStockSuggestions">
+                    <button type="submit" class="btn btn-success"><i class="fas fa-lightbulb"></i> Stock Suggestions</button>
                 </form>
             </div>
           </div>

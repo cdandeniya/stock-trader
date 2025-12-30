@@ -3,7 +3,8 @@
 <c:set var="heading" value="Home"/>
 <%@ include file="header.jsp" %>
 <div class="container">
-    <h2>Manager Options:</h2>
+    <h2><i class="fas fa-user-shield"></i> Manager Dashboard</h2>
+    <p class="text-muted mb-4">Manage employees, view reports, and control stock prices</p>
     <%
         String email = (String) session.getAttribute("email");
         String role = (String) session.getAttribute("role");
@@ -26,15 +27,14 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Manage Employee</h5>
-                    <div class="container">
+                    <h5 class="card-title"><i class="fas fa-users"></i> Manage Employee</h5>
+                    <div>
                         <form action="viewAddEmployee.jsp">
-                            <input type="submit" value="Add Employee" class="btn btn-primary"/>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add Employee</button>
                         </form>
-                        <form action="getEmployees" class="pt-1">
-                            <input type="submit" value="View / Edit / Delete Employee" class="btn btn-primary"/>
+                        <form action="getEmployees">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> View / Edit / Delete Employee</button>
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -42,22 +42,22 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Sales and orders</h5>
-                    <div class="container">
+                    <h5 class="card-title"><i class="fas fa-chart-bar"></i> Sales and Orders</h5>
+                    <div>
                         <form action="viewSalesReport.jsp">
-                            <input type="submit" value="View sales report" class="btn btn-primary"/>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-file-alt"></i> View Sales Report</button>
                         </form>
-                        <form action="viewSummaryListing.jsp" class="pt-1">
-                            <input type="submit" value="View Revenue Summary" class="btn btn-primary"/>
+                        <form action="viewSummaryListing.jsp">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-dollar-sign"></i> View Revenue Summary</button>
                         </form>
-                        <form action="getHighestRevenueEmployee" class="pt-1">
-                            <input type="submit" value="Highest Revenue Customer Representative" class="btn btn-success"/>
+                        <form action="getHighestRevenueEmployee">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-trophy"></i> Top Revenue Employee</button>
                         </form>
-                        <form action="getHighestRevenueCustomer" class="pt-1">
-                            <input type="submit" value="Highest Revenue Customer" class="btn btn-success"/>
+                        <form action="getHighestRevenueCustomer">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-star"></i> Top Revenue Customer</button>
                         </form>
-                        <form action="viewSearchOrders" class="pt-1">
-                            <input type="submit" value="Search orders" class="btn btn-success"/>
+                        <form action="viewSearchOrders">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-search"></i> Search Orders</button>
                         </form>
                     </div>
                 </div>
@@ -66,21 +66,19 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Stocks</h5>
-                    <div class="container">
+                    <h5 class="card-title"><i class="fas fa-chart-line"></i> Stocks</h5>
+                    <div>
                         <form action="viewSetStockPrice">
-                            <input type="submit" value="Set stock price" class="btn btn-primary"/>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-dollar-sign"></i> Set Stock Price</button>
                         </form>
-                        <form action="getStocks" class="pt-1">
-                            <input type="submit" value="View all Stocks" class="btn btn-primary"/>
+                        <form action="getStocks">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-list"></i> View All Stocks</button>
                         </form>
-
-                        <form action="getBestsellers" class="pt-1">
-                            <input type="submit" value="View Bestsellers" class="btn btn-primary"/>
+                        <form action="getBestsellers">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-fire"></i> View Bestsellers</button>
                         </form>
-
-                        <form action="getActivelyTradedStocks" class="pt-1">
-                            <input type="submit" value="View actively traded stocks" class="btn btn-success"/>
+                        <form action="getActivelyTradedStocks">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-exchange-alt"></i> Actively Traded Stocks</button>
                         </form>
                     </div>
                 </div>

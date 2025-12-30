@@ -5,7 +5,8 @@
 	This page contains customer representative specific accessible buttons
 -->
 <div class="container">
-    <h2>Customer Representative Options:</h2>
+    <h2><i class="fas fa-headset"></i> Customer Representative Dashboard</h2>
+    <p class="text-muted mb-4">Manage customers and process orders</p>
     <%
         String email = (String)session.getAttribute("email");
         String role = (String)session.getAttribute("role");
@@ -29,10 +30,10 @@
         <div class="col">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Record order</h5>
-                <div class="container">
+                <h5 class="card-title"><i class="fas fa-clipboard-list"></i> Record Order</h5>
+                <div>
                     <form action="viewAddCustomerOrder">
-                        <input type="submit" value="Record order" class="btn btn-success"/>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Record Order</button>
                     </form>
                 </div>
               </div>
@@ -41,15 +42,14 @@
         <div class="col">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Manage Customer</h5>
-                <div class="container">
+                <h5 class="card-title"><i class="fas fa-users"></i> Manage Customer</h5>
+                <div>
                     <form action="viewAddCustomer.jsp">
-                        <input type="submit" value="Add Customer" class="btn btn-primary"/>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add Customer</button>
                     </form>
-                    <form action="getCustomers" class="pt-1">
-                        <input type="submit" value="View / Edit / Delete Customer" class="btn btn-primary"/>
+                    <form action="getCustomers">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> View / Edit / Delete Customer</button>
                     </form>
-
                 </div>
               </div>
             </div>
@@ -57,14 +57,13 @@
         <div class="col">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Other</h5>
-                <div class="container">
+                <h5 class="card-title"><i class="fas fa-tasks"></i> Other</h5>
+                <div>
                     <form action="getCustomerMailingList">
-                        <input type="submit" value="Customer Mailing List" class="btn btn-primary"/>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-envelope"></i> Customer Mailing List</button>
                     </form>
-
-                    <form action="viewCustomerStockSuggestions" class="pt-1">
-                        <input type="submit" value="View Suggestions" class="btn btn-success"/>
+                    <form action="viewCustomerStockSuggestions">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-lightbulb"></i> View Suggestions</button>
                     </form>
                 </div>
               </div>
