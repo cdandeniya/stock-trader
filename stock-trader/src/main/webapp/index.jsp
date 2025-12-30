@@ -3,7 +3,7 @@
 <c:set var="heading" value="Home"/>
 <%@ include file="header.jsp" %>
 
-<div class="container">
+<div class="container" style="padding-bottom: 60px; margin-bottom: 40px;">
 			<h2>Login to Stock Trading System</h2>
 			<%
 				// email and role are already declared in header.jsp
@@ -49,17 +49,17 @@
 					<label for="password">Password</label>
 	            	<input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
 	        	</div>
-				<div class="form-group">
+				<div class="form-group" style="margin-bottom: 1.5rem; z-index: 1000; position: relative;">
 					<label for="role">Role</label>
-					<select class="form-control" id="role" name="role" required>
+					<select class="form-control" id="role" name="role" required style="position: relative; z-index: 1001;">
                         <option value="customer">Customer</option>
                         <option value="manager">Manager</option>
                         <option value="customerRepresentative">Customer Representative</option>
 					</select>
 				</div>
-				<button type="submit" class="btn btn-success btn-block">Login</button>
+				<button type="submit" class="btn btn-success btn-block" style="margin-top: 1rem;">Login</button>
 			</form>
-			<div class="mt-3 text-center">
+			<div class="mt-4 mb-3 text-center">
 				<small class="text-muted">Demo Credentials:<br/>
 				Manager: dwarren@cs.sunysb.edu / admin789<br/>
 				Customer Rep: dsmith@cs.sunysb.edu / rep456<br/>
