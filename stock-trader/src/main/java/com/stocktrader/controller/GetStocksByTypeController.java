@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.StockDao;
-import model.Stock;
+import com.stocktrader.repository.StockDao;
+import com.stocktrader.model.Stock;
 
 /**
  * Servlet implementation class SearchItemsByTypeController

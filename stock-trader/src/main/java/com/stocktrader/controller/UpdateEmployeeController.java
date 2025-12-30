@@ -6,11 +6,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.EmployeeDao;
-import dao.LoginDao;
-import model.Employee;
-import model.Location;
-import model.Login;
+import com.stocktrader.repository.EmployeeDao;
+import com.stocktrader.repository.LoginDao;
+import com.stocktrader.model.Employee;
+import com.stocktrader.model.Location;
+import com.stocktrader.model.Login;
 
 /**
  * Servlet implementation class UpdateEmployeeController

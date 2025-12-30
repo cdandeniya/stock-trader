@@ -1,8 +1,8 @@
 package com.stocktrader.repository;
+import com.stocktrader.config.DatabaseConfig;
 
-import model.*;
+import com.stocktrader.model.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -13,9 +13,6 @@ import java.util.List;
 
 public class OrderDao {
 	
-	private static final String URL = "jdbc:mysql://localhost:3306/cse305?useSSL=false";
-    private static final String USER = "root";
-    private static final String PASSWORD = "12345";
     
     public Order getDummyTrailingStopOrder() {
         TrailingStopOrder order = new TrailingStopOrder();
@@ -87,8 +84,8 @@ public String submitOrder(Order order,
     PreparedStatement psCheck, psInsert, psUpdateStock = null;
     ResultSet rs = null;
     try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection(URL, USER, PASSWORD);
+        
+        con = DatabaseConfig.getConnection();
         con.setAutoCommit(false);
 
         int shares          = order.getNumShares();
@@ -169,9 +166,9 @@ public String submitOrder(Order order,
         psInsert.setString(4, orderType);
         psInsert.setInt(5, accountNumber);
         if (employee != null)
-            psInsert.setString(6, employee.getEmployeeID());
+            psInsert.setLong(6, employee.getEmployeeID());
         else
-            psInsert.setNull(6, java.sql.Types.VARCHAR);
+            psInsert.setNull(6, java.sql.Types.BIGINT);
         psInsert.setString(7, buySellType);
         psInsert.setString(8, pricePerShare);
         psInsert.setString(9, percentage);
@@ -219,8 +216,8 @@ public String submitOrder(Order order,
     Statement st = null;
     ResultSet rs = null;
     try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection(URL, USER, PASSWORD);
+        
+        con = DatabaseConfig.getConnection();
         st = con.createStatement();
         String sql =
             "SELECT o.orderID, o.dateTime, o.numShares, o.orderType, o.accountNum, o.employeeID, o.buySellType, o.pricePerShare, o.percentage " +
@@ -268,8 +265,8 @@ public String submitOrder(Order order,
     Statement  st  = null;
     ResultSet  rs  = null;
     try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection(URL, USER, PASSWORD);
+        
+        con = DatabaseConfig.getConnection();
         st  = con.createStatement();
         String sql =
             "SELECT o.orderID,o.dateTime,o.numShares,o.orderType,o.buySellType,o.pricePerShare,o.percentage " +
@@ -319,8 +316,8 @@ public String submitOrder(Order order,
     Statement  st  = null;
     ResultSet  rs  = null;
     try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection(URL, USER, PASSWORD);
+        
+        con = DatabaseConfig.getConnection();
         st  = con.createStatement();
         String sql =
             "SELECT o.orderID,o.dateTime,o.numShares,o.orderType,o.buySellType,o.pricePerShare,o.percentage " +
@@ -369,8 +366,8 @@ public String submitOrder(Order order,
     Statement  st  = null;
     ResultSet  rs  = null;
     try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection(URL, USER, PASSWORD);
+        
+        con = DatabaseConfig.getConnection();
         st  = con.createStatement();
         String sql =
         		"SELECT o.orderID, o.stockSymbol, o.dateTime, o.orderType, o.pricePerShare, o.percentage, s.sharePrice " +

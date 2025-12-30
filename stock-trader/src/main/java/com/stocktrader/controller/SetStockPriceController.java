@@ -1,12 +1,12 @@
 package com.stocktrader.controller;
 
-import dao.EmployeeDao;
-import dao.LoginDao;
-import dao.StockDao;
-import model.Employee;
-import model.Location;
-import model.Login;
-import model.Stock;
+import com.stocktrader.repository.EmployeeDao;
+import com.stocktrader.repository.LoginDao;
+import com.stocktrader.repository.StockDao;
+import com.stocktrader.model.Employee;
+import com.stocktrader.model.Location;
+import com.stocktrader.model.Login;
+import com.stocktrader.model.Stock;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

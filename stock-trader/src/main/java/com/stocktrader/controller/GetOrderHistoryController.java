@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.OrderDao;
-import model.Order;
+import com.stocktrader.repository.OrderDao;
+import com.stocktrader.model.Order;
 
 /**
  * Servlet implementation class GetOrderHistoryController

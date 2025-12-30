@@ -1,6 +1,7 @@
 package com.stocktrader.repository;
 
-import model.Login;
+import com.stocktrader.config.DatabaseConfig;
+import com.stocktrader.model.Login;
 
 import java.sql.*;
 
@@ -8,9 +9,6 @@ public class LoginDao {
 	/*
 	 * This class handles all the database operations related to login functionality
 	 */
-	private static final String URL = "jdbc:mysql://localhost:3306/cse305?useSSL=false";
-    private static final String USER = "root";
-    private static final String PASSWORD = "12345";
     
     private static final int PRIME_1 = 257;
     private static final long PRIME_MODULUS = 9223372036854775783L;
@@ -30,8 +28,7 @@ public class LoginDao {
         ResultSet rs = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(URL, USER, PASSWORD); //establish the connection with SQL svr
+            con = DatabaseConfig.getConnection(); //establish the connection with SQL svr
 
 
             String sql = "SELECT role FROM login WHERE username = ? AND password = ?"; 
@@ -94,8 +91,7 @@ public class LoginDao {
         PreparedStatement pst = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(URL, USER, PASSWORD); //establish the connection with SQL svr
+            con = DatabaseConfig.getConnection(); //establish the connection with SQL svr
 
             String sql = "INSERT INTO login (username, password, role) VALUES (?, ?, ?)"; //prepared add to db string 
             pst = con.prepareStatement(sql);

@@ -1,37 +1,35 @@
 package com.stocktrader.repository;
+import com.stocktrader.config.DatabaseConfig;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import model.Employee;
-import model.Location;
+import com.stocktrader.model.Employee;
+import com.stocktrader.model.Location;
 
 public class EmployeeDao {
 
-    private static final String URL  = "jdbc:mysql://localhost:3306/cse305?useSSL=false";
-    private static final String USER = "root";
-    private static final String PASS = "12345";
 
     public String addEmployee(Employee e) {
         String q = "INSERT INTO employee " +
                 "(employeeID, firstName, lastName, address, city, state, zipCode, " +
                 "telephone, startDate, hourlyRate, SSN) " +
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-        try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+        try (Connection cn = DatabaseConfig.getConnection();
              PreparedStatement ps = cn.prepareStatement(q)) {
 
-            ps.setNString(1, e.getEmployeeID());
+            ps.setLong(1, e.getEmployeeID());
             ps.setString(2, e.getFirstName());
             ps.setString(3, e.getLastName());
             ps.setString(4, e.getAddress());
             ps.setString(5, e.getLocation().getCity());
             ps.setString(6, e.getLocation().getState());
-            ps.setLong(7, e.getLocation().getZipCode());
+            ps.setString(7, e.getLocation().getZipCode());
             ps.setString(8, e.getTelephone());
-            ps.setDate(9, java.sql.Date.valueOf(e.getStartDate()));
-            ps.setBigDecimal(10, new BigDecimal(e.getHourlyRate()).setScale(2, RoundingMode.HALF_UP));
+            ps.setDate(9, e.getStartDate());
+            ps.setBigDecimal(10, e.getHourlyRate().setScale(2, RoundingMode.HALF_UP));
             ps.setString(11, e.getSsn());
             return (ps.executeUpdate() > 0) ? "success" : "failure";
         } catch (SQLException ex) {
@@ -44,7 +42,7 @@ public class EmployeeDao {
         String q = "UPDATE employee SET firstName=?, lastName=?, address=?, city=?, state=?, zipCode=?, " +
                    "telephone=?, startDate=?, hourlyRate=?, SSN=? " +
                    "WHERE employeeID=?";
-        try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+        try (Connection cn = DatabaseConfig.getConnection();
              PreparedStatement ps = cn.prepareStatement(q)) {
 
             ps.setString(1, e.getFirstName());
@@ -52,12 +50,12 @@ public class EmployeeDao {
             ps.setString(3, e.getAddress());
             ps.setString(4, e.getLocation().getCity());
             ps.setString(5, e.getLocation().getState());
-            ps.setLong(6, e.getLocation().getZipCode());
+            ps.setString(6, e.getLocation().getZipCode());
             ps.setString(7, e.getTelephone());
-            ps.setDate(8, java.sql.Date.valueOf(e.getStartDate()));
-            ps.setBigDecimal(9, new BigDecimal(e.getHourlyRate()).setScale(2, RoundingMode.HALF_UP));
+            ps.setDate(8, e.getStartDate());
+            ps.setBigDecimal(9, e.getHourlyRate().setScale(2, RoundingMode.HALF_UP));
             ps.setString(10, e.getSsn());
-            ps.setLong(11, Long.parseLong(e.getEmployeeID()));
+            ps.setLong(11, e.getEmployeeID());
             return (ps.executeUpdate() > 0) ? "success" : "failure";
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -66,7 +64,7 @@ public class EmployeeDao {
     }
 
     public String deleteEmployee(String id) {
-        try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+        try (Connection cn = DatabaseConfig.getConnection();
              PreparedStatement ps = cn.prepareStatement("DELETE FROM employee WHERE employeeID=?")) {
 
             ps.setLong(1, Long.parseLong(id));
@@ -80,7 +78,7 @@ public class EmployeeDao {
 
 
     public Employee getEmployee(long id) {
-        try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+        try (Connection cn = DatabaseConfig.getConnection();
              PreparedStatement ps = cn.prepareStatement("SELECT * FROM employee WHERE employeeID=?")) {
             ps.setLong(1, id);
             try (ResultSet rs = ps.executeQuery()) {
@@ -101,7 +99,7 @@ public class EmployeeDao {
     }
 
     public List<Employee> getEmployees() {
-        try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+        try (Connection cn = DatabaseConfig.getConnection();
              PreparedStatement ps = cn.prepareStatement("SELECT * FROM employee");
              ResultSet rs = ps.executeQuery()) {
 
@@ -146,7 +144,7 @@ public class EmployeeDao {
                  + "FROM orders o WHERE o.employeeID IS NOT NULL "
                  + "GROUP BY o.employeeID ORDER BY revenue DESC LIMIT 1"
                  + ") topEmp ON e.employeeID = topEmp.employeeID";
-        try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+        try (Connection cn = DatabaseConfig.getConnection();
              PreparedStatement ps = cn.prepareStatement(q);
              ResultSet rs = ps.executeQuery()) {
 
@@ -159,7 +157,7 @@ public class EmployeeDao {
     
     public String getEmployeeID(String username) {
         String q = "SELECT employeeID FROM employee WHERE username = ?";
-        try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+        try (Connection cn = DatabaseConfig.getConnection();
              PreparedStatement ps = cn.prepareStatement(q)) {
 
             ps.setString(1, username);

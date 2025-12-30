@@ -1,10 +1,10 @@
 package com.stocktrader.controller;
 
-import dao.CustomerDao;
-import dao.EmployeeDao;
-import dao.OrderDao;
-import dao.StockDao;
-import model.*;
+import com.stocktrader.repository.CustomerDao;
+import com.stocktrader.repository.EmployeeDao;
+import com.stocktrader.repository.OrderDao;
+import com.stocktrader.repository.StockDao;
+import com.stocktrader.model.*;
 
 import java.io.IOException;
 import java.util.Date;

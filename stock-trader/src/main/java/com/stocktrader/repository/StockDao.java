@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Stock;
+import com.stocktrader.config.DatabaseConfig;
+import com.stocktrader.model.Stock;
 
 public class StockDao {
-
-	private static final String URL = "jdbc:mysql://localhost:3306/cse305?useSSL=false";
-    private static final String USER = "root";
-    private static final String PASSWORD = "12345";
 	
     public Stock getDummyStock() {
         Stock stock = new Stock();
@@ -50,8 +47,8 @@ public class StockDao {
     	ResultSet rs = null;
     	
     	try {
-    		Class.forName("com.mysql.cj.jdbc.Driver");
-    		con = DriverManager.getConnection(URL, USER, PASSWORD);
+    		
+    		con = DatabaseConfig.getConnection();
     		st = con.createStatement();
     		String query = 
     	    "SELECT stockName, stockSymbol, sharePrice, numShares, stockType " +
@@ -81,8 +78,8 @@ public List<Stock> getAllStocks() {
     Statement  st  = null;
     ResultSet  rs  = null;
     try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection(URL, USER, PASSWORD);
+        
+        con = DatabaseConfig.getConnection();
         st  = con.createStatement();
         String query =
             "SELECT stockName, stockSymbol, sharePrice, numShares, stockType " +
@@ -109,8 +106,8 @@ public Stock getStockBySymbol(String stockSymbol) {
     Statement  st  = null;
     ResultSet  rs  = null;
     try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection(URL, USER, PASSWORD);
+        
+        con = DatabaseConfig.getConnection();
         st  = con.createStatement();
         rs = st.executeQuery(
             "SELECT stockName, stockSymbol, sharePrice, numShares, stockType " +
@@ -141,8 +138,8 @@ public Stock getStockBySymbol(String stockSymbol) {
     	Connection con = null;
         Statement st = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            
+            con = DatabaseConfig.getConnection();
             st = con.createStatement();
             int rows = st.executeUpdate("UPDATE stock SET sharePrice=" + stockPrice + " WHERE stockSymbol='" + stockSymbol + "'");
             return rows > 0 ? "success" : "failure";
@@ -163,8 +160,8 @@ public Stock getStockBySymbol(String stockSymbol) {
 	    Statement st = null;
 	    ResultSet rs = null;
 	    try {
-	        Class.forName("com.mysql.cj.jdbc.Driver");
-	        con = DriverManager.getConnection(URL, USER, PASSWORD);
+	        
+	        con = DatabaseConfig.getConnection();
 	        st = con.createStatement();
 	        rs = st.executeQuery(
 	            "SELECT s.stockName, s.stockSymbol, s.sharePrice, SUM(o.numShares) AS numShares, s.stockType " +
@@ -194,8 +191,8 @@ public Stock getStockBySymbol(String stockSymbol) {
 	    Statement  st  = null;
 	    ResultSet  rs  = null;
 	    try {
-	        Class.forName("com.mysql.cj.jdbc.Driver");
-	        con = DriverManager.getConnection(URL, USER, PASSWORD);
+	        
+	        con = DatabaseConfig.getConnection();
 	        st  = con.createStatement();
 
 	        String query =
@@ -229,8 +226,8 @@ public Stock getStockBySymbol(String stockSymbol) {
 	    Statement  st  = null;
 	    ResultSet  rs  = null;
 	    try {
-	        Class.forName("com.mysql.cj.jdbc.Driver");
-	        con = DriverManager.getConnection(URL, USER, PASSWORD);
+	        
+	        con = DatabaseConfig.getConnection();
 	        st  = con.createStatement();
 
 	        String query =
@@ -268,8 +265,8 @@ public Stock getStockBySymbol(String stockSymbol) {
         Statement st = null;
         ResultSet rs = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            
+            con = DatabaseConfig.getConnection();
             st = con.createStatement();
             rs = st.executeQuery("SELECT stockName,stockSymbol,sharePrice,numShares,stockType FROM stock WHERE stockName LIKE '%" + name + "%'");
             while (rs.next()) {
@@ -293,8 +290,8 @@ public Stock getStockBySymbol(String stockSymbol) {
         Statement  st  = null;
         ResultSet  rs  = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            
+            con = DatabaseConfig.getConnection();
             st  = con.createStatement();
 
             String query =
@@ -334,8 +331,8 @@ public Stock getStockBySymbol(String stockSymbol) {
         Statement  st  = null;
         ResultSet  rs  = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            
+            con = DatabaseConfig.getConnection();
             st  = con.createStatement();
             String sql =
                 "SELECT s.stockName, s.stockSymbol, s.stockType, " +
@@ -382,8 +379,8 @@ public Stock getStockBySymbol(String stockSymbol) {
         Statement st = null;
         ResultSet rs = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            
+            con = DatabaseConfig.getConnection();
             st = con.createStatement();
             rs = st.executeQuery("SELECT DISTINCT stockType FROM stock");
             while (rs.next()) {
@@ -406,8 +403,8 @@ public Stock getStockBySymbol(String stockSymbol) {
         Statement st = null;
         ResultSet rs = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            
+            con = DatabaseConfig.getConnection();
             st = con.createStatement();
             rs = st.executeQuery("SELECT stockName,stockSymbol,sharePrice,numShares,stockType FROM stock WHERE stockType='" + stockType + "'");
             while (rs.next()) {

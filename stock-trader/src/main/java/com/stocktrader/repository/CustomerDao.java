@@ -1,22 +1,20 @@
 package com.stocktrader.repository;
+import com.stocktrader.config.DatabaseConfig;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import model.Customer;
-import model.Location;
+import com.stocktrader.model.Customer;
+import com.stocktrader.model.Location;
 
 public class CustomerDao {
 
-	private static final String URL = "jdbc:mysql://localhost:3306/CSE305?useSSL=false";
-	private static final String USER = "root";
-	private static final String PASS = "12345";
 
 	public String addCustomer(Customer c) {
 	    String custQ = "INSERT INTO customers (customerID, firstName, lastName, address, city, state, zipCode, telephone, email, accountCreationDate, creditCard, rating) "
 	                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 	    String acctQ = "INSERT INTO accounts (accountNum, customerID) VALUES (?,?)";
-	    try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+	    try (Connection cn = DatabaseConfig.getConnection();
 	         PreparedStatement psCust = cn.prepareStatement(custQ);
 	         PreparedStatement psAcct = cn.prepareStatement(acctQ)) {
 
@@ -56,7 +54,7 @@ public class CustomerDao {
 
 	public String editCustomer(Customer c){
 		String q = "UPDATE customers SET firstName=?, lastName=?, address=?, city=?, state=?, zipCode=?, telephone=?, email=?, creditCard=?, rating=? WHERE customerID=?";
-		try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+		try (Connection cn = DatabaseConfig.getConnection();
 				PreparedStatement ps = cn.prepareStatement(q)) {
 
 			ps.setString(1, c.getFirstName());
@@ -78,7 +76,7 @@ public class CustomerDao {
 	}
 
 	public String deleteCustomer(String id){
-		try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+		try (Connection cn = DatabaseConfig.getConnection();
 				PreparedStatement ps = cn.prepareStatement("DELETE FROM customers WHERE customerID=?")) {
 			ps.setLong(1, Long.parseLong(id));
 			return (ps.executeUpdate() > 0) ? "success" : "failure";
@@ -93,7 +91,7 @@ public class CustomerDao {
 	             + "FROM orders o JOIN accounts a ON o.accountNum = a.accountNum "
 	             + "GROUP BY a.customerID ORDER BY revenue DESC LIMIT 1"
 	             + ") topCust ON c.customerID = topCust.customerID";
-	    try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+	    try (Connection cn = DatabaseConfig.getConnection();
 	         PreparedStatement ps = cn.prepareStatement(q);
 	         ResultSet rs = ps.executeQuery()) {
 
@@ -106,7 +104,7 @@ public class CustomerDao {
 
 	public Customer getCustomer(long id) {
 	    String q = "SELECT * FROM customers WHERE customerID = ?";
-	    try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+	    try (Connection cn = DatabaseConfig.getConnection();
 	         PreparedStatement ps = cn.prepareStatement(q)) {
 	        ps.setLong(1, id);
 	        try (ResultSet rs = ps.executeQuery()) {
@@ -130,7 +128,7 @@ public class CustomerDao {
 	public List<Customer> getCustomers(String keyword) {
 	    String like = "%" + (keyword == null ? "" : keyword) + "%";
 	    String q = "SELECT * FROM customers WHERE firstName LIKE ? OR lastName LIKE ? OR email LIKE ?";
-	    try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+	    try (Connection cn = DatabaseConfig.getConnection();
 	         PreparedStatement ps = cn.prepareStatement(q)) {
 
 	        ps.setString(1, like);
@@ -149,7 +147,7 @@ public class CustomerDao {
 	
 	public List<Customer> getAllCustomers() {
 	    String q = "SELECT * FROM customers";
-	    try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+	    try (Connection cn = DatabaseConfig.getConnection();
 	         PreparedStatement ps = cn.prepareStatement(q);
 	         ResultSet rs = ps.executeQuery()) {
 
@@ -165,7 +163,7 @@ public class CustomerDao {
 	
 	public List<Customer> getCustomerMailingList() {
 	    String q = "SELECT * FROM customers WHERE email IS NOT NULL AND email <> ''";
-	    try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+	    try (Connection cn = DatabaseConfig.getConnection();
 	         PreparedStatement ps = cn.prepareStatement(q);
 	         ResultSet rs = ps.executeQuery()) {
 
@@ -215,7 +213,7 @@ public class CustomerDao {
 			      + "SELECT accountNum "
 			      + "  FROM accounts a "
 			      + " WHERE customerID = ?";
-			    try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+			    try (Connection cn = DatabaseConfig.getConnection();
 			         PreparedStatement ps = cn.prepareStatement(q)) {
 
 			        ps.setLong(1, Long.valueOf(customerId));
@@ -234,7 +232,7 @@ public class CustomerDao {
 	    String q = "SELECT a.customerID FROM login l "
 	             + "JOIN accounts a ON l.accountNum = a.accountNum "
 	             + "WHERE l.username = ?";
-	    try (Connection cn = DriverManager.getConnection(URL, USER, PASS);
+	    try (Connection cn = DatabaseConfig.getConnection();
 	         PreparedStatement ps = cn.prepareStatement(q)) {
 
 	        ps.setString(1, username);

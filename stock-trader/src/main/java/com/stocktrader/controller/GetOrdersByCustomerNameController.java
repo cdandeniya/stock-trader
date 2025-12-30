@@ -1,7 +1,7 @@
 package com.stocktrader.controller;
 
-import dao.OrderDao;
-import model.Order;
+import com.stocktrader.repository.OrderDao;
+import com.stocktrader.model.Order;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

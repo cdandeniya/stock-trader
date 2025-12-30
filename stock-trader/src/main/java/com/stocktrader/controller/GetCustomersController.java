@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CustomerDao;
-import model.Customer;
+import com.stocktrader.repository.CustomerDao;
+import com.stocktrader.model.Customer;
 
 /**
  * Servlet implementation class GetCustomersController
