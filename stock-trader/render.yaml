@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: stock-trader
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: DB_URL
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        value: cse305
+    healthCheckPath: /index.jsp
+
+databases:
+  - name: stock-trader-db
+    databaseName: cse305
+    user: stocktrader
+    plan: free
+
