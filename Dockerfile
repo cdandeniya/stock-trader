@@ -4,7 +4,7 @@ FROM maven:3.8-openjdk-8 AS build
 WORKDIR /app/stock-trader
 
 # Copy pom.xml and download dependencies
-COPY stock-trader/pom.xml .
+COPY stock-trader/pom.xml ./pom.xml
 RUN mvn dependency:go-offline -B
 
 # Copy source code and build
