@@ -81,7 +81,7 @@
 	</c:if>
 	</div>
 	<div class="container pt-1">
-		<form action="home.jsp">
+		<form action="/stock-trader/index.jsp" method="get">
 			<input type="submit" value="Home" class="btn btn-success"/>
 		</form>
 	</div>

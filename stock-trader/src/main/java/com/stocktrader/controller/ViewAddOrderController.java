@@ -44,7 +44,7 @@ public class ViewAddOrderController extends HttpServlet {
 
         request.setAttribute("stocks", stocks);
 
-        RequestDispatcher rd = request.getRequestDispatcher("viewAddOrder.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/representative/viewAddOrder.jsp");
         rd.forward(request, response);
 	}
 

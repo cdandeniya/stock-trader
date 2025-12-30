@@ -39,7 +39,7 @@ public class ViewCustomerStockSuggestionsController extends HttpServlet {
 
 		request.setAttribute("customers", customers);
 		request.setAttribute("heading", "Customer suggestions");
-		RequestDispatcher rd = request.getRequestDispatcher("viewCustomerStockSuggestions.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/customer/viewCustomerStockSuggestions.jsp");
 		rd.forward(request, response);
 
 	}

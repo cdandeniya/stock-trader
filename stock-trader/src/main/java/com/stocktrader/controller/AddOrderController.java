@@ -107,11 +107,11 @@ public class AddOrderController extends HttpServlet {
         RequestDispatcher rd;
 
         if (result.equals("success")) {
-            rd = request.getRequestDispatcher("home.jsp?result=success");
+            rd = request.getRequestDispatcher("/WEB-INF/views/customer/home.jsp?result=success");
         }
         else
         {
-            rd = request.getRequestDispatcher("home.jsp?result=error");
+            rd = request.getRequestDispatcher("/WEB-INF/views/customer/home.jsp?result=error");
         }
         rd.forward(request, response);
 

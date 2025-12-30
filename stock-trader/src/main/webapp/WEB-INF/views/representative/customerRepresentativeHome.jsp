@@ -1,4 +1,4 @@
-<%@ include file="../../header.jsp" %>
+<%@ include file="/header.jsp" %>
 <!--
 	This is the Home page for Customer Representative
 	This page contains various buttons to navigate the online auction house
@@ -14,16 +14,19 @@
 
         //redirect to appropriate home page if already logged in
         if(email != null) {
-            if(role.equals("manager")) {
-                response.sendRedirect("managerHome.jsp");
+            if(role != null && role.equals("manager")) {
+                request.getRequestDispatcher("/WEB-INF/views/admin/managerHome.jsp").forward(request, response);
+                return;
             }
-            else if(!role.equals("customerRepresentative")) {
-                response.sendRedirect("home.jsp");
+            else if(role != null && !role.equals("customerRepresentative")) {
+                request.getRequestDispatcher("/WEB-INF/views/customer/home.jsp").forward(request, response);
+                return;
             }
         }
         else {
-            // redirect to log in if not alreaddy logged in
-            response.sendRedirect("index.jsp");
+            // redirect to log in if not already logged in
+            response.sendRedirect("/stock-trader/index.jsp");
+            return;
         }
     %>
 
@@ -45,7 +48,7 @@
               <div class="card-body">
                 <h5 class="card-title"><i class="fas fa-users"></i> Manage Customer</h5>
                 <div>
-                    <form action="viewAddCustomer.jsp">
+                    <form action="viewAddCustomer">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add Customer</button>
                     </form>
                     <form action="getCustomers">
@@ -71,4 +74,4 @@
             </div>
         </div>
 </div>
-<%@ include file="footer.jsp" %>
+<%@ include file="/footer.jsp" %>

@@ -40,7 +40,7 @@ public class SalesReportController extends HttpServlet {
 
         request.setAttribute("heading", "Sales Report for " + month + "/" + year);
         request.setAttribute("items", items);
-		RequestDispatcher rd = request.getRequestDispatcher("showSalesReport.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/admin/showSalesReport.jsp");
 		rd.forward(request, response);
 	}
 

@@ -44,7 +44,7 @@ public class ViewSetStockPriceController extends HttpServlet {
 
         request.setAttribute("stocks", stocks);
 
-        RequestDispatcher rd = request.getRequestDispatcher("viewSetStockPrice.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/admin/viewSetStockPrice.jsp");
         rd.forward(request, response);
 	}
 

@@ -43,7 +43,7 @@ public class GetHighestRevenueEmployeeController extends HttpServlet {
 		employees.add(employee);
 		request.setAttribute("employees", employees);
 		request.setAttribute("heading", "Highest Revenue Employee");
-		RequestDispatcher rd = request.getRequestDispatcher("showEmployee.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/representative/showEmployee.jsp");
 		rd.forward(request, response);
 
 	}

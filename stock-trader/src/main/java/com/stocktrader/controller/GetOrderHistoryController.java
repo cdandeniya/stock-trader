@@ -47,7 +47,7 @@ public class GetOrderHistoryController extends HttpServlet {
 		request.setAttribute("orders", orders);
 		request.setAttribute("heading", "Customer orders");
 
-		RequestDispatcher rd = request.getRequestDispatcher("showOrders.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/customer/showOrders.jsp");
 		rd.forward(request, response);
 
 	}

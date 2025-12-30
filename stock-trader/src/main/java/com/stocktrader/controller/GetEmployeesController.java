@@ -39,7 +39,7 @@ public class GetEmployeesController extends HttpServlet {
 		List<Employee> employees = employeeDao.getEmployees();
 		
 		request.setAttribute("employees", employees);
-		RequestDispatcher rd = request.getRequestDispatcher("showEmployee.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/representative/showEmployee.jsp");
 		rd.forward(request, response);
 
 	}

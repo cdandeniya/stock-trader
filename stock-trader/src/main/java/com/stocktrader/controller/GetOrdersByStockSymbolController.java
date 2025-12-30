@@ -46,7 +46,7 @@ public class GetOrdersByStockSymbolController extends HttpServlet {
 		request.setAttribute("orders", orders);
 		request.setAttribute("heading", "Orders for " + stockSymbol);
 
-		RequestDispatcher rd = request.getRequestDispatcher("showOrders.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/customer/showOrders.jsp");
 		rd.forward(request, response);
 
 	}

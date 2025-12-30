@@ -37,7 +37,7 @@ public class GetCustomerMailingListController extends HttpServlet {
 		List<Customer> customers = customerDao.getCustomerMailingList();
 		request.setAttribute("customers", customers);
 		request.setAttribute("heading", "Customer Mailing List");
-		RequestDispatcher rd = request.getRequestDispatcher("showCustomerMailingList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/representative/showCustomerMailingList.jsp");
 		rd.forward(request, response);
 
 	}

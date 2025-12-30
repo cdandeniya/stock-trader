@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="heading" value="Home"/>
-<%@ include file="../../header.jsp" %>
+<%@ include file="/header.jsp" %>
 
 <div class="container">
     <h2><i class="fas fa-user"></i> Customer Dashboard</h2>
@@ -13,16 +13,19 @@
 
         //redirect to appropriate home page if already logged in
         if(email != null) {
-            if(role.equals("manager")) {
-                response.sendRedirect("managerHome.jsp");
+            if(role != null && role.equals("manager")) {
+                request.getRequestDispatcher("/WEB-INF/views/admin/managerHome.jsp").forward(request, response);
+                return;
             }
-            else if(role.equals("customerRepresentative")) {
-                response.sendRedirect("customerRepresentativeHome.jsp");
+            else if(role != null && role.equals("customerRepresentative")) {
+                request.getRequestDispatcher("/WEB-INF/views/representative/customerRepresentativeHome.jsp").forward(request, response);
+                return;
             }
         }
         else {
-            // redirect to log in if not alreaddy logged in
-            response.sendRedirect("index.jsp");
+            // redirect to log in if not already logged in
+            response.sendRedirect("/stock-trader/index.jsp");
+            return;
         }
     %>
     <div class="row">
@@ -67,4 +70,4 @@
     </div>
 </div>
 </div>
-<%@ include file="../../footer.jsp" %>
+<%@ include file="/footer.jsp" %>

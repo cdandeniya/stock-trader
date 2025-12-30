@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="heading" value="Home"/>
-<%@ include file="../../header.jsp" %>
+<%@ include file="/header.jsp" %>
 <div class="container">
     <h2><i class="fas fa-user-shield"></i> Manager Dashboard</h2>
     <p class="text-muted mb-4">Manage employees, view reports, and control stock prices</p>
@@ -12,14 +12,17 @@
 
         //redirect to appropriate home page if already logged in
         if (email != null) {
-            if (role.equals("customerRepresentative")) {
-                response.sendRedirect("customerRepresentativeHome.jsp");
-            } else if (!role.equals("manager")) {
-                response.sendRedirect("home.jsp");
+            if (role != null && role.equals("customerRepresentative")) {
+                request.getRequestDispatcher("/WEB-INF/views/representative/customerRepresentativeHome.jsp").forward(request, response);
+                return;
+            } else if (role != null && !role.equals("manager")) {
+                request.getRequestDispatcher("/WEB-INF/views/customer/home.jsp").forward(request, response);
+                return;
             }
         } else {
-            // redirect to log in if not alreaddy logged in
-            response.sendRedirect("index.jsp");
+            // redirect to log in if not already logged in
+            response.sendRedirect("/stock-trader/index.jsp");
+            return;
         }
 
     %>
@@ -30,7 +33,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-users"></i> Manage Employee</h5>
                     <div>
-                        <form action="viewAddEmployee.jsp">
+                        <form action="viewAddEmployee">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add Employee</button>
                         </form>
                         <form action="getEmployees">
@@ -45,10 +48,10 @@
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-chart-bar"></i> Sales and Orders</h5>
                     <div>
-                        <form action="viewSalesReport.jsp">
+                        <form action="viewSalesReport">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-file-alt"></i> View Sales Report</button>
                         </form>
-                        <form action="viewSummaryListing.jsp">
+                        <form action="viewSummaryListing">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-dollar-sign"></i> View Revenue Summary</button>
                         </form>
                         <form action="getHighestRevenueEmployee">
@@ -90,4 +93,4 @@
 
 
 </div>
-<%@ include file="footer.jsp" %>
+<%@ include file="/footer.jsp" %>

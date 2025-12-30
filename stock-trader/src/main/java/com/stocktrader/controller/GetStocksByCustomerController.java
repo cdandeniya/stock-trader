@@ -46,7 +46,7 @@ public class GetStocksByCustomerController extends HttpServlet {
 		request.setAttribute("stocks", stocks);
 		request.setAttribute("heading", "Current stock holdings");
 
-		RequestDispatcher rd = request.getRequestDispatcher("showStocks.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/customer/showStocks.jsp");
 		rd.forward(request, response);
 	}
 

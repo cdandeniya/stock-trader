@@ -41,7 +41,7 @@ public class GetHighestRevenueCustomerController extends HttpServlet {
         customers.add(customer);
         request.setAttribute("customers", customers);
         request.setAttribute("heading", "Highest Revenue Customer");
-        RequestDispatcher rd = request.getRequestDispatcher("showCustomer.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/representative/showCustomer.jsp");
         rd.forward(request, response);
 
     }

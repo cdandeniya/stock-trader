@@ -46,7 +46,7 @@ public class GetOrdersByCustomerNameController extends HttpServlet {
 		request.setAttribute("orders", orders);
 		request.setAttribute("heading", "Orders for customer name " + customerName);
 
-		RequestDispatcher rd = request.getRequestDispatcher("showOrders.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/customer/showOrders.jsp");
 		rd.forward(request, response);
 
 	}

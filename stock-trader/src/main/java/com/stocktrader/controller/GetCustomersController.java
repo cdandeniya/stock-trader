@@ -46,7 +46,7 @@ public class GetCustomersController extends HttpServlet {
 		
 		request.setAttribute("customers", customers);
 		request.setAttribute("heading", "Show customers");
-		RequestDispatcher rd = request.getRequestDispatcher("showCustomer.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/representative/showCustomer.jsp");
 		rd.forward(request, response);
 		
 	}

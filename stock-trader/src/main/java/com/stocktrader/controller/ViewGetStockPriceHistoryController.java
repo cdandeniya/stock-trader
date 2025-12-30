@@ -44,7 +44,7 @@ public class ViewGetStockPriceHistoryController extends HttpServlet {
 
         request.setAttribute("stocks", stocks);
 
-        RequestDispatcher rd = request.getRequestDispatcher("viewGetStockPriceHistory.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/customer/viewGetStockPriceHistory.jsp");
         rd.forward(request, response);
 	}
 

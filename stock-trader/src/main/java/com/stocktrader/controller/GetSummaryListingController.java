@@ -38,7 +38,7 @@ public class GetSummaryListingController extends HttpServlet {
 		
 		request.setAttribute("items", items);
 		request.setAttribute("heading", "Summary Listing of revenue generated - " + keyword);
-		RequestDispatcher rd = request.getRequestDispatcher("showSalesReport.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/admin/showSalesReport.jsp");
 		rd.forward(request, response);
 	}
 

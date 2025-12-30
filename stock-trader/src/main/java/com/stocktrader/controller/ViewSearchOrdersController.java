@@ -35,7 +35,7 @@ public class ViewSearchOrdersController extends HttpServlet {
 		List<Stock> items = stockDao.getAllStocks();
 		
 		request.setAttribute("items", items);
-		RequestDispatcher rd = request.getRequestDispatcher("viewSearchOrders.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/customer/viewSearchOrders.jsp");
 		rd.forward(request, response);
 	}
 

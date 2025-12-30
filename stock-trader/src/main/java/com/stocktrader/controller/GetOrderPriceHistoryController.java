@@ -47,7 +47,7 @@ public class GetOrderPriceHistoryController extends HttpServlet {
 		request.setAttribute("entries", entries);
 		request.setAttribute("heading", "Order price history");
 
-        RequestDispatcher rd = request.getRequestDispatcher("viewGetOrderPriceHistory.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/customer/viewGetOrderPriceHistory.jsp");
         rd.forward(request, response);
 	}
 
