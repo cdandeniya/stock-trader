@@ -61,6 +61,7 @@
 			</form>
 			<div class="mt-4 mb-3 text-center" style="margin-top: 2rem !important;">
 				<small class="text-muted">Demo Credentials:<br/>
+				Test Account: test@test.com / admin (any role)<br/>
 				Manager: dwarren@cs.sunysb.edu / admin789<br/>
 				Customer Rep: dsmith@cs.sunysb.edu / rep456<br/>
 				Customer: lewis.p@cs.sunysb.edu / password123</small>
