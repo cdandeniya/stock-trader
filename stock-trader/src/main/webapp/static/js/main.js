@@ -1,4 +1,4 @@
-// Stock Trading System - Main JavaScript
+// NovaTrade - Main JavaScript
 
 // Form validation
 document.addEventListener('DOMContentLoaded', function() {

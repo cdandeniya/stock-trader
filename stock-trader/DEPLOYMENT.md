@@ -1,4 +1,4 @@
-# Deployment Guide for Stock Trading System
+# Deployment Guide for NovaTrade
 
 This guide covers multiple hosting options for deploying this Java web application to make it publicly accessible for your resume.
 
@@ -221,7 +221,7 @@ fi
 
 ### Example Resume Entry:
 ```
-Stock Trading System | Java Web Application
+NovaTrade | Java Web Application
 • Developed full-stack trading platform with role-based access control
 • Implemented MVC architecture using Java Servlets, JSP, and MySQL
 • Deployed on Railway with MySQL database

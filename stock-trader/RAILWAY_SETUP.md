@@ -106,7 +106,7 @@ Once everything is working:
 
 **Example Resume Entry:**
 ```
-Stock Trading System | Full-Stack Java Web Application
+NovaTrade | Full-Stack Java Web Application
 • Developed MVC-based trading platform with role-based access control
 • Technologies: Java, Servlets, JSP, MySQL, Bootstrap, Maven, Docker
 • Deployed on Railway with MySQL database

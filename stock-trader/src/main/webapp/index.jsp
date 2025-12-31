@@ -4,7 +4,7 @@
 <%@ include file="header.jsp" %>
 
 <div class="container" style="padding-bottom: 150px; margin-bottom: 80px; overflow: visible !important; min-height: 500px;">
-			<h2>Login to Stock Trading System</h2>
+			<h2>Login to NovaTrade</h2>
 			<%
 				// email and role are already declared in header.jsp
 				email = (String)session.getAttribute("email");

@@ -13,7 +13,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${heading} - Stock Trading System</title>
+    <title>${heading} - NovaTrade</title>
     <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link href="static/css/main.css" rel="stylesheet" />
@@ -25,7 +25,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark mb-3">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.jsp">
-            <i class="fas fa-chart-line mr-2"></i> Stock Trading System
+            <i class="fas fa-chart-line mr-2"></i> NovaTrade
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>

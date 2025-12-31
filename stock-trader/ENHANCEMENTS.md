@@ -1,7 +1,7 @@
 # Project Enhancements Summary
 
 ## Overview
-This document outlines all the enhancements made to the Stock Trading System to improve security, code quality, user experience, and maintainability.
+This document outlines all the enhancements made to NovaTrade to improve security, code quality, user experience, and maintainability.
 
 ## ✅ Completed Enhancements
 

@@ -135,7 +135,7 @@ Make sure your GitHub README:
 Once hosted, add to resume:
 
 ```
-Stock Trading System | Full-Stack Java Web Application
+NovaTrade | Full-Stack Java Web Application
 • Live Demo: https://stocktrader.yourname.com
 • GitHub: github.com/cdandeniya/stock-trader
 • Technologies: Java, Servlets, JSP, MySQL, Bootstrap, Maven
@@ -145,7 +145,7 @@ Stock Trading System | Full-Stack Java Web Application
 **Or if using free hosting:**
 
 ```
-Stock Trading System | Full-Stack Java Web Application
+NovaTrade | Full-Stack Java Web Application
 • Live Demo: https://stock-trader.fly.dev
 • GitHub: github.com/cdandeniya/stock-trader
 • Technologies: Java, Servlets, JSP, MySQL, Bootstrap, Maven

@@ -1,4 +1,4 @@
-# Stock Trading System
+# NovaTrade
 
 A comprehensive Java web application for managing stock trading operations with role-based access control.
 

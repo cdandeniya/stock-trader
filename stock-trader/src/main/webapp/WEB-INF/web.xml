@@ -5,7 +5,7 @@
 -->
 
 <web-app>
-  <display-name>Stock Trading System</display-name>
+  <display-name>NovaTrade</display-name>
   <servlet>
   	<servlet-name>GetCustomersController</servlet-name>
   	<display-name>GetCustomersController</display-name>
