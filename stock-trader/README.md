@@ -1,218 +1,171 @@
 # NovaTrade
 
-A modern, full-stack stock trading platform built with Java, featuring comprehensive role-based access control, real-time trading capabilities, and intuitive user management. NovaTrade provides a complete solution for managing stock trading operations, customer relationships, and business analytics.
+**A full-stack stock trading platform with role-based access control — built with Java Servlets, JSP, and MySQL.**
 
-## 🌟 Overview
+[![Live Demo](https://img.shields.io/badge/Live_Demo-129.158.38.59-blue?style=for-the-badge)](http://129.158.38.59/)
+[![GitHub](https://img.shields.io/badge/GitHub-cdandeniya%2Fstock--trader-181717?style=for-the-badge&logo=github)](https://github.com/cdandeniya/stock-trader)
 
-NovaTrade is a professional-grade web application that simulates a real-world stock trading system. It enables three distinct user roles—customers, customer representatives, and managers—each with tailored functionality to support their specific needs. Built using Java Servlets, JSP, and MySQL, NovaTrade demonstrates enterprise-level architecture patterns including MVC design, DAO data access, and secure session management.
-
-## ✨ Key Features
-
-### 🎭 Role-Based Access Control
-- **Customers**: Execute trades, manage portfolios, track stock prices, and view transaction history
-- **Customer Representatives**: Process customer orders, manage customer accounts, and assist with trading operations
-- **Managers**: Oversee employees, generate sales reports, manage stock prices, and analyze business performance
-
-### 📈 Trading Capabilities
-- **Multiple Order Types**: Market orders, trailing stop orders, and hidden stop orders
-- **Real-Time Stock Management**: Live price updates and stock information
-- **Portfolio Tracking**: Comprehensive view of holdings, performance, and transaction history
-- **Order Processing**: Efficient order execution and status tracking
-
-### 🏢 Business Management
-- **Employee Management**: Add, edit, and manage employee records with role assignments
-- **Customer Management**: Complete customer lifecycle management with account tracking
-- **Sales Analytics**: Detailed reporting and revenue analysis for business insights
-- **Stock Administration**: Manage stock listings, prices, and trading status
-
-### 🎨 User Experience
-- **Modern UI**: Clean, responsive interface built with Bootstrap and custom CSS
-- **Intuitive Navigation**: Role-specific dashboards and streamlined workflows
-- **Real-Time Updates**: Dynamic content updates without page refreshes
-- **Mobile-Friendly**: Responsive design that works across devices
-
-## 🏗️ Architecture
-
-NovaTrade follows a well-structured MVC (Model-View-Controller) architecture:
-
-```
-NovaTrade/
-├── src/main/java/com/stocktrader/
-│   ├── controller/     # HTTP request handlers (Servlets)
-│   ├── service/        # Business logic layer
-│   ├── repository/     # Data access layer (DAOs)
-│   ├── model/          # Domain objects and entities
-│   ├── config/         # Configuration (Database, etc.)
-│   └── util/           # Utility classes
-├── src/main/webapp/
-│   ├── WEB-INF/views/  # JSP views organized by role
-│   ├── static/         # CSS, JavaScript, assets
-│   └── *.jsp           # Public pages
-└── src/main/resources/sql/  # Database scripts
-```
-
-### Technology Stack
-- **Backend**: Java 8, Java Servlets, JSP
-- **Database**: MySQL 5.7+
-- **Frontend**: HTML5, CSS3, JavaScript, Bootstrap 4, jQuery
-- **Build Tool**: Maven 3.6+
-- **Application Server**: Apache Tomcat 8.5+
-- **Deployment**: Docker, Railway.app
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Java 8 or higher
-- Maven 3.6+
-- MySQL 5.7+ or MySQL 8.0+
-- Apache Tomcat 8.5+ (or use Maven Tomcat plugin)
-
-### Local Development Setup
-
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/cdandeniya/stock-trader.git
-   cd stock-trader/stock-trader
-   ```
-
-2. **Set Up Database**
-   ```bash
-   mysql -u root -p < src/main/resources/sql/BETTERSCRIPT.sql
-   mysql -u root -p < src/main/resources/sql/basevalues.sql
-   ```
-
-3. **Configure Database Connection**
-   
-   Update `src/main/java/com/stocktrader/config/DatabaseConfig.java` with your database credentials:
-   ```java
-   private static final String URL = "jdbc:mysql://localhost:3306/cse305";
-   private static final String USER = "your_username";
-   private static final String PASSWORD = "your_password";
-   ```
-
-4. **Build the Project**
-   ```bash
-   mvn clean install
-   ```
-
-5. **Deploy to Tomcat**
-   ```bash
-   mvn tomcat7:deploy
-   ```
-   
-   Or manually copy the WAR file from `target/stock-trader.war` to your Tomcat `webapps/` directory.
-
-6. **Access the Application**
-   ```
-   http://localhost:8080/stock-trader/
-   ```
-
-## 🔑 Demo Credentials
-
-### Test Account (Works with any role)
-- **Email**: `test@test.com`
-- **Password**: `admin`
-
-### Manager Account
-- **Email**: `dwarren@cs.sunysb.edu`
-- **Password**: `admin789`
-- **Capabilities**: Employee management, sales reports, stock price management
-
-### Customer Representative Account
-- **Email**: `dsmith@cs.sunysb.edu`
-- **Password**: `rep456`
-- **Capabilities**: Customer management, order processing
-
-### Customer Account
-- **Email**: `lewis.p@cs.sunysb.edu`
-- **Password**: `password123`
-- **Capabilities**: Stock trading, portfolio management
-
-## 📊 Database Schema
-
-### Core Entities
-- **Customers**: Customer profiles, ratings, and account information
-- **Employee**: Staff records with roles, compensation, and employment details
-- **Stock**: Stock symbols, prices, and trading status
-- **Account**: Customer account mappings and relationships
-- **StockOrder**: Trading orders, transactions, and execution details
-- **Location**: Geographic data for customers and employees
-
-## 🔒 Security Features
-
-- **Session-Based Authentication**: Secure user sessions with timeout protection
-- **Role-Based Access Control**: Strict permission enforcement at the controller level
-- **Input Validation**: Server-side validation for all user inputs
-- **SQL Injection Prevention**: Parameterized queries and prepared statements
-- **Password Security**: Secure password handling (with hashing support)
-
-## 🚀 Deployment
-
-### Railway.app Deployment (Recommended)
-
-NovaTrade includes Docker configuration for easy deployment on Railway.app:
-
-1. **Connect Repository**: Link your GitHub repository to Railway
-2. **Add MySQL Service**: Create a MySQL database service
-3. **Set Environment Variables**: Configure database connection variables
-4. **Deploy**: Railway automatically builds and deploys using the included Dockerfile
-
-See `DEPLOYMENT.md` for detailed deployment instructions.
-
-### Production Checklist
-- [ ] Update database credentials in `DatabaseConfig.java`
-- [ ] Configure environment variables for production database
-- [ ] Set up proper logging and monitoring
-- [ ] Enable HTTPS/SSL certificates
-- [ ] Configure database backups
-- [ ] Review and update security settings
-
-## 🛠️ Development
-
-### Adding New Features
-
-1. **Model**: Create domain objects in `model/`
-2. **Repository**: Implement data access methods in `repository/`
-3. **Service**: Add business logic in `service/`
-4. **Controller**: Create servlet controllers in `controller/`
-5. **View**: Add JSP pages in appropriate `views/` directory
-6. **Configuration**: Update `web.xml` with servlet mappings
-
-### Code Style Guidelines
-- Follow Java naming conventions (camelCase for variables, PascalCase for classes)
-- Use meaningful variable and method names
-- Add JavaDoc comments for public methods
-- Handle exceptions appropriately with try-catch blocks
-- Keep methods focused and single-purpose
-
-## 📝 Project Structure
-
-- **Controllers**: Handle HTTP requests, validate input, coordinate with services
-- **Services**: Contain business logic, validation rules, and orchestrate operations
-- **Repositories**: Data access layer using DAO pattern, handle all database operations
-- **Models**: Domain objects representing business entities (Customer, Employee, Stock, etc.)
-- **Views**: JSP pages organized by user role for presentation layer
-- **Config**: Centralized configuration including database connection management
-
-## 🎯 Use Cases
-
-- **Educational**: Learn full-stack Java web development with MVC architecture
-- **Portfolio**: Showcase enterprise-level application development skills
-- **Demo**: Demonstrate role-based systems and complex business logic
-- **Foundation**: Base for building more advanced trading platforms
-
-## 📄 License
-
-This project was developed for educational purposes as part of CSE305 coursework. Feel free to use it as a learning resource or starting point for your own projects.
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit pull requests.
-
-## 📧 Contact
-
-For questions or feedback, please open an issue on GitHub or contact the repository maintainer.
+> **Try it live:** [http://129.158.38.59/](http://129.158.38.59/)  
+> **Quick demo login:** `test@test.com` / `admin` (select any role)
 
 ---
 
-**Built with ❤️ using Java, Servlets, JSP, MySQL, and Bootstrap**
+## Overview
+
+NovaTrade simulates a brokerage operations platform where **customers**, **customer representatives**, and **managers** each get a dedicated workflow. The app demonstrates enterprise-style patterns: MVC layering, DAO data access, session-based auth, and a MySQL-backed domain model for trading, reporting, and administration.
+
+<p align="center">
+  <img src="docs/screenshots/01-login.png" alt="NovaTrade login page with role selection" width="720"/>
+  <br/>
+  <em>Login with role-based routing to the correct dashboard</em>
+</p>
+
+---
+
+## Platform Screenshots
+
+### Manager — operations & analytics
+Employee management, sales reports, revenue summaries, and stock price administration.
+
+<p align="center">
+  <img src="docs/screenshots/02-manager-dashboard.png" alt="Manager dashboard" width="720"/>
+</p>
+
+### Customer — trading & portfolio
+Place orders, view history, track holdings, search stocks, and get suggestions.
+
+<p align="center">
+  <img src="docs/screenshots/03-customer-dashboard.png" alt="Customer dashboard" width="720"/>
+</p>
+
+### Customer representative — client services
+Record orders, manage customer records, and access mailing lists.
+
+<p align="center">
+  <img src="docs/screenshots/04-representative-dashboard.png" alt="Customer representative dashboard" width="720"/>
+</p>
+
+---
+
+## Key Features
+
+| Area | Capabilities |
+|------|----------------|
+| **Authentication** | Session-based login with role selection (Manager, Customer Rep, Customer) |
+| **Trading** | Market, trailing stop, and hidden stop orders |
+| **Portfolio** | Holdings, price history, bestsellers, stock suggestions |
+| **Administration** | Employee CRUD, customer management, stock price updates |
+| **Analytics** | Sales reports, revenue summaries, top employee/customer by revenue |
+| **UI** | Responsive Bootstrap layout with role-specific dashboards |
+
+---
+
+## Tech Stack
+
+| Layer | Technologies |
+|-------|----------------|
+| **Backend** | Java 8, Java Servlets, JSP |
+| **Database** | MySQL 8 |
+| **Frontend** | HTML5, CSS3, JavaScript, Bootstrap 4, jQuery |
+| **Build** | Maven |
+| **Server** | Apache Tomcat 8.5 |
+| **Deployment** | Docker, Docker Compose, Oracle Cloud (Always Free) |
+
+---
+
+## Architecture
+
+```
+src/main/java/com/stocktrader/
+├── controller/   # HTTP request handling (Servlets)
+├── service/      # Business logic
+├── repository/   # DAO pattern — database access
+├── model/        # Domain entities
+└── config/       # Database configuration (env-aware)
+
+src/main/webapp/
+├── WEB-INF/views/   # Role-specific JSP views
+└── static/          # CSS, JavaScript, assets
+```
+
+---
+
+## Demo Credentials
+
+| Role | Email | Password |
+|------|-------|----------|
+| **Any role (quick demo)** | `test@test.com` | `admin` |
+| Manager | `dwarren@cs.sunysb.edu` | `admin789` |
+| Customer rep | `dsmith@cs.sunysb.edu` | `rep456` |
+| Customer | `lewis.p@cs.sunysb.edu` | `password123` |
+
+> Database-backed accounts require the MySQL schema and seed data (see setup below).
+
+---
+
+## Local Development
+
+### Prerequisites
+- Java 8+
+- Maven 3.6+
+- MySQL 5.7+ or 8.0+
+
+### Setup
+
+```bash
+git clone https://github.com/cdandeniya/stock-trader.git
+cd stock-trader/stock-trader
+
+# Initialize database
+mysql -u root -p < src/main/resources/sql/BETTERSCRIPT.sql
+mysql -u root -p < src/main/resources/sql/basevalues.sql
+
+# Build and run (Tomcat Maven plugin)
+mvn clean package
+mvn tomcat7:run
+```
+
+Open [http://localhost:8080/stock-trader/](http://localhost:8080/stock-trader/)
+
+Environment variables (`DB_URL`, `DB_USER`, `DB_PASSWORD`, or `DATABASE_URL`) override defaults in `DatabaseConfig.java` for production.
+
+---
+
+## Deployment (Docker)
+
+Production-style deploy with Tomcat + MySQL:
+
+```bash
+cp .env.example .env   # set strong passwords
+docker compose up -d --build
+```
+
+App is served at `http://localhost/` (port 80). See `DEPLOYMENT.md` and `docker-compose.yml` for Oracle Cloud VM hosting.
+
+---
+
+## Database Schema
+
+Core tables: `Customers`, `Employee`, `Manager`, `CustomerRep`, `Stock`, `Account`, `StockOrder`, `Location`, and `login`.
+
+Scripts: `src/main/resources/sql/BETTERSCRIPT.sql`, `basevalues.sql`
+
+---
+
+## Security
+
+- Session-based authentication with role checks in controllers
+- Parameterized SQL (prepared statements) to mitigate injection
+- Server-side input validation on forms
+- Environment-based database credentials (no hardcoded production secrets)
+
+---
+
+## Links
+
+- **Live demo:** [http://129.158.38.59/](http://129.158.38.59/)
+- **Repository:** [github.com/cdandeniya/stock-trader](https://github.com/cdandeniya/stock-trader)
+
+---
+
+**Built with Java, Servlets, JSP, MySQL, Bootstrap, and Docker**
