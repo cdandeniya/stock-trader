@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-changeme}
+      MYSQL_DATABASE: cse305
+      MYSQL_USER: stocktrader
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-stocktrader}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./src/main/resources/sql/BETTERSCRIPT.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./src/main/resources/sql/basevalues.sql:/docker-entrypoint-initdb.d/02_data.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 40s
+
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-80}:8080"
+    environment:
+      PORT: "8080"
+      DB_URL: jdbc:mysql://db:3306/cse305?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      DB_USER: stocktrader
+      DB_PASSWORD: ${MYSQL_PASSWORD:-stocktrader}
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:

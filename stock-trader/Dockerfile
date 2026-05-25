@@ -18,12 +18,10 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 # Copy WAR file from build stage
 COPY --from=build /app/target/stock-trader.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose port (Railway uses PORT env var)
 EXPOSE 8080
 
-# Set environment variable for port (Railway requirement)
-ENV PORT=8080
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Start Tomcat
-CMD ["catalina.sh", "run"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
